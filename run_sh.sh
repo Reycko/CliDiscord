@@ -9,7 +9,7 @@ do
     read -r chid
     echo
 
-    python CliDiscord.py "$token" "$chid"
+    python cli_discord.py "$token" "$chid"
 
     echo
     echo

@@ -5,7 +5,7 @@ echo Channel ID?
 set /p chid=
 echo.
 :(re)start
-python CliDiscord.py %token% %chid%
+python cli_discord.py %token% %chid%
 echo.
 echo.
 echo Press any key to restart the program.
