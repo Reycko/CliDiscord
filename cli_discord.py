@@ -101,7 +101,7 @@ async def send_discord_message(channel, message):
 
 async def update_messages(channel):
     """Update and display messages"""
-    global SHOULD_CLEAR_SCREEN, SHOULD_CLEAR_SCREEN
+    global SHOULD_CLEAR_SCREEN
     messages = []
     async for message in channel.history(limit=50, oldest_first=False):
         messages.append(message)
@@ -141,10 +141,11 @@ async def user_input():
                 sys.stdout.write("\033[F\033[K")  # Move up 1 line, Clear line
                 sys.stdout.flush()
                 if msg:
-                    if msg == "[[.refresh":
-                        await update_messages(channel)
-                    else:
-                        await send_discord_message(channel, msg)
+                    # if msg == "[[.refresh":
+                    #     await update_messages(channel)
+                    # else:
+                    # Deprectated since it now updates in real-time
+                    await send_discord_message(channel, msg)
         finally:
             colorama.deinit()
 
