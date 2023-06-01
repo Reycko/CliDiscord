@@ -61,6 +61,7 @@ async def on_ready():
         print(f'Failed to fetch channel with ID {CHANNEL_ID}')
 
     await update_messages(channel)
+    await user_input()
 
 
 @client.event
@@ -73,6 +74,8 @@ async def on_message(message):
             SHOULD_CLEAR_SCREEN = False
         while message.content == "":
             await asyncio.sleep(0.01)
+            # Fix for empty messages, wait
+            # until messages aren't empty
         print(f'{Fore.RESET}{Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
         MESSAGE_HISTORY.append(message)
 
@@ -169,7 +172,6 @@ async def main():
     """Start bot and start gathering user input"""
     await asyncio.gather(
         client.start(TOKEN),
-        user_input()
     )
 
 loop = asyncio.get_event_loop()
