@@ -54,7 +54,7 @@ async def on_ready():
                 colorama.init()
                 try:
                     print(
-                        f'{Fore.RESET}{Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
+                        f'{Fore.RESET}{Fore.RED}{message.created_at} {Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
                 finally:
                     colorama.deinit()
     else:
@@ -76,7 +76,7 @@ async def on_message(message):
             await asyncio.sleep(0.01)
             # Fix for empty messages, wait
             # until messages aren't empty
-        print(f'{Fore.RESET}{Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
+        print(f'{Fore.RESET}{Fore.RED}{message.created_at}{Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
         MESSAGE_HISTORY.append(message)
 
 
@@ -132,7 +132,7 @@ async def update_messages(channel):
             colorama.init()
             try:
                 print(
-                    f'{Fore.RESET}{Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
+                    f'{Fore.RESET}{Fore.RED}{message.created_at} {Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
             finally:
                 colorama.deinit()
 
