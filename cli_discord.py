@@ -72,7 +72,7 @@ async def on_message(message):
             clear_screen()
             SHOULD_CLEAR_SCREEN = False
         while message.content != "":
-            asyncio.sleep(0.01)
+            await asyncio.sleep(0.01)
         print(f'{Fore.RESET}{Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
         MESSAGE_HISTORY.append(message)
 
