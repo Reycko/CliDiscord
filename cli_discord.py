@@ -71,6 +71,8 @@ async def on_message(message):
         if SHOULD_CLEAR_SCREEN:
             clear_screen()
             SHOULD_CLEAR_SCREEN = False
+        while message.content != "":
+            asyncio.sleep(0.01)
         print(f'{Fore.RESET}{Fore.BLUE}{message.author}: {message.content}{Fore.RESET}')
         MESSAGE_HISTORY.append(message)
 
@@ -141,13 +143,14 @@ async def user_input():
         colorama.init()
         try:
             while not client.is_closed():
-                sys.stdout.write(f"{Fore.RESET}{Back.GREEN}{Fore.WHITE}"
-                                 f"{client.user.name}#{client.user.discriminator}:"
-                                 f"{Back.RESET}{Fore.RESET} ")
+                #                sys.stdout.write(f"{Fore.RESET}{Back.GREEN}{Fore.WHITE}"
+                #                                 f"{client.user.name}#{client.user.discriminator}:"
+                #                                 f"{Back.RESET}{Fore.RESET} ")
 
-                sys.stdout.flush()
-                sys.stdout.write(f"{Fore.YELLOW}")
-                msg = await ainput()  # Asynchronously read user input
+                # sys.stdout.flush()
+                msg = await ainput(f"{Fore.RESET}{Back.GREEN}{Fore.WHITE}"
+                                   f"{client.user.name}#{client.user.discriminator}:"
+                                   f"{Back.RESET}{Fore.RESET}{Fore.YELLOW} ")
                 sys.stdout.write(f"{Fore.RESET}")
 
                 sys.stdout.write("\033[F\033[K")  # Move up 1 line, Clear line
